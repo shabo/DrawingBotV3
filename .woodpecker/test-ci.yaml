@@ -1,0 +1,26 @@
+# Woodpecker pipeline. This file replaces the GitHub Actions workflow
+# ".github/workflows/test_ci.yml".
+# On a push or a pull request, the pipeline runs the general tests and the
+# regression tests headless. Then it prints the JUnit summary.
+
+labels:
+  platform: linux/amd64
+
+when:
+  - event: push
+  - event: pull_request
+
+steps:
+  - name: test
+    image: eclipse-temurin:19-jdk@sha256:f3fbf1ad599d4b5dbdd7ceb55708d10cb9fafb08e094ef91e92aa63b520a232e
+    commands:
+      - set -eu
+      - apt-get update
+      - apt-get install -y --no-install-recommends xvfb xauth libgtk-3-0 libxtst6 libgl1
+      - bash ci/test/junit-summary.test.sh
+      - export GRADLE_USER_HOME="$$CI_WORKSPACE/.gradle-home"
+      - gradle_rc=0
+      - xvfb-run -a sh ./gradlew --no-daemon testAll regressionTest || gradle_rc=$$?
+      - summary_rc=0
+      - bash ci/junit-summary.sh build/test-results || summary_rc=$$?
+      - if [ "$$gradle_rc" -ne 0 ] || [ "$$summary_rc" -ne 0 ]; then exit 1; fi

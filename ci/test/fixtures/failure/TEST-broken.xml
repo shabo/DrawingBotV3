@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="drawingbot.example.BrokenTest" tests="2" skipped="0" failures="1" errors="0" timestamp="2026-11-19T10:00:03" hostname="ci" time="0.040">
+  <properties/>
+  <testcase name="testAdds" classname="drawingbot.example.BrokenTest" time="0.001"/>
+  <testcase name="testAddsTwoNumbers" classname="drawingbot.example.BrokenTest" time="0.002">
+    <failure message="expected 4 but was 5" type="java.lang.AssertionError">java.lang.AssertionError: expected 4 but was 5
+	at drawingbot.example.BrokenTest.testAddsTwoNumbers(BrokenTest.java:21)
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+</testsuite>

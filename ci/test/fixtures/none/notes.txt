@@ -1,0 +1,2 @@
+This directory holds no JUnit XML files.
+It holds only this text file, so the glob TEST-*.xml must find nothing.

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="drawingbot.example.StringTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-19T10:00:01" hostname="ci" time="0.007">
+  <properties/>
+  <testcase name="testTrim" classname="drawingbot.example.StringTest" time="0.001"/>
+  <testcase name="testJoin" classname="drawingbot.example.StringTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+</testsuite>

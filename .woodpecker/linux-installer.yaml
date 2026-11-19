@@ -1,0 +1,25 @@
+# Woodpecker pipeline. This file replaces the GitHub Actions workflow
+# ".github/workflows/linux_installer.yml".
+# A manual run with DBV3_JOB=linux-installer builds the Linux installers.
+# Then it prints the name and the SHA-256 of each .deb and .rpm file.
+
+labels:
+  platform: linux/amd64
+
+when:
+  - event: manual
+    evaluate: 'DBV3_JOB == "linux-installer"'
+
+steps:
+  - name: linux-installer
+    image: eclipse-temurin:19-jdk@sha256:f3fbf1ad599d4b5dbdd7ceb55708d10cb9fafb08e094ef91e92aa63b520a232e
+    commands:
+      - set -eu
+      - apt-get update
+      - apt-get install -y --no-install-recommends xvfb xauth libgtk-3-0 libxtst6 libgl1 fakeroot rpm binutils
+      - export GRADLE_USER_HOME="$$CI_WORKSPACE/.gradle-home"
+      - sh ./gradlew --no-daemon jpackage
+      - set -- build/jpackage-installers/*.deb build/jpackage-installers/*.rpm
+      - found=0
+      - for f in "$$@"; do [ -f "$$f" ] || continue; found=1; sha256sum "$$f"; done
+      - if [ "$$found" -eq 0 ]; then echo "no .deb or .rpm installer found" >&2; exit 1; fi

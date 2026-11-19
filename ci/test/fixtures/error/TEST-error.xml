@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="drawingbot.example.ErrorTest" tests="1" skipped="0" failures="0" errors="1" timestamp="2026-11-19T10:00:04" hostname="ci" time="0.050">
+  <properties/>
+  <testcase name="testThrows" classname="drawingbot.example.ErrorTest" time="0.003">
+    <error message="boom" type="java.lang.IllegalStateException">java.lang.IllegalStateException: boom
+	at drawingbot.example.ErrorTest.testThrows(ErrorTest.java:14)
+</error>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+</testsuite>
