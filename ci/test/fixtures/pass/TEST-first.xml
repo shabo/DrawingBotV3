@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="drawingbot.example.MathTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-11-19T10:00:00" hostname="ci" time="0.012">
+  <properties/>
+  <testcase name="testAdds" classname="drawingbot.example.MathTest" time="0.001"/>
+  <testcase name="testSubtracts" classname="drawingbot.example.MathTest" time="0.001"/>
+  <testcase name="testMultiplies" classname="drawingbot.example.MathTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+</testsuite>
